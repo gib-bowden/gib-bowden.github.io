@@ -1,0 +1,48 @@
+
+body {
+	background-color: #C1C8E4;
+}
+
+
+li{
+	list-style: none;
+}
+
+nav {
+	text-align: center;
+}
+
+
+nav li {
+	display: inline-block;
+	font-size: 25px;
+}
+
+a, a:link, a:visited {
+	color: #5680E9;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #fff; 
+}
+
+
+/****Contact Page****/
+
+.contact-main {
+
+	text-align: center;
+}
+
+#contact-list li {
+	display: inline-block;
+	margin: 0 10px 0 10px;
+}
+
+#contact-list a {
+	font-size: 100px
+}
+
+
+
