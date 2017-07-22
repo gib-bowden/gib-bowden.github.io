@@ -3,6 +3,12 @@
 	font-family: 'Marcellus SC', serif;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+
+}
+
 body {
 	background-color: white;
 }
@@ -42,6 +48,7 @@ nav {
 nav li {
 	display: inline-block;
 	font-size: 25px;
+	margin-left: 15px;
 }
 
 a, a:link, a:visited {
@@ -51,29 +58,28 @@ a, a:link, a:visited {
 
 a:hover {
 	color: #5AB9EA; 
+	background-color: white;
+	border-radius: 5%
 }
 
-a:active {
-	color:#fff;
-}
 
 a.selected {
  	color:#5680E9;
 	border-bottom: solid;
+	background-color: #C1C8E4;
+	padding-left: 5px;
+	padding-right: 5px;
  }
 
  footer {
     position: relative;
     left: 0px;
     bottom: 0;
-    height: 30px;
+    max-height: 100px;
     width: 100%;
     text-align: center;	
-    overflow:hidden;
 
  }
-
-
 
 
 /****Experience Page****/
@@ -143,7 +149,6 @@ a.selected {
 
 #social-media a:hover {
 	background-color: #5680E9;
-
 	color: white; 
 }
 
