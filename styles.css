@@ -1,6 +1,32 @@
+/****Common Elements****/
+* {
+	font-family: 'Marcellus SC', serif;
+}
 
 body {
-	background-color: #C1C8E4;
+	background-color: white;
+}
+
+#nav-header {
+    float: left;
+    margin: 0;
+    padding: 5px 0 0 0;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    background-color: #C1C8E4;
+}
+
+#nav-header ul {
+	padding: 0;
+}
+
+#nav-divider {
+	color: #5680E9;
+}
+
+header {
+	color: 	#5680E9;
 }
 
 
@@ -19,13 +45,54 @@ nav li {
 }
 
 a, a:link, a:visited {
-	color: #5680E9;
+	color: white;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #fff; 
+	color: #5AB9EA; 
 }
+
+a:active {
+	color:#fff;
+}
+
+a.selected {
+ 	color:#5680E9;
+	border-bottom: solid;
+ }
+
+ footer {
+    position: relative;
+    left: 0px;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    text-align: center;	
+    overflow:hidden;
+
+ }
+
+
+
+
+/****Experience Page****/
+#experience-main {
+	display: inline-block;
+	width: 100%;	
+} 
+
+#experience-main article {
+	overflow: auto auto 0 auto;	
+}
+
+#experience-main article {
+	margin: auto;
+	width: 80%;
+	padding: 2% 10% 0 0;
+	overflow: auto;
+}
+
 
 
 /****Contact Page****/
@@ -33,6 +100,10 @@ a:hover {
 .contact-main {
 
 	text-align: center;
+}
+
+#contact-list {
+	padding-left: 0;
 }
 
 #contact-list li {
@@ -44,5 +115,53 @@ a:hover {
 	font-size: 100px
 }
 
+#social-media {
+    float: left;
+    margin: 0 0 30px 0;
+    padding: 5px 0 0 0;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    background-color: white;
+}
+
+#social-media li {
+	margin: 2% 5% 2% 5%;
+}
 
 
+#social-media a {
+	border-radius: 10px;
+	padding: 20%;
+}
+
+#social-media a, #social-media a:link, #social-media a:visited {
+	color: #5680E9;
+	text-decoration: none;
+}
+
+
+#social-media a:hover {
+	background-color: #5680E9;
+
+	color: white; 
+}
+
+#social-media a:active {
+	color:#5680E9;
+}
+
+/****Font Sizes****/
+
+h1 {
+	font-size: 3em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+
+h4 {
+	font-size: 20px;
+}
