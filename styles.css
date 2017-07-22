@@ -3,6 +3,12 @@
 	font-family: 'Marcellus SC', serif;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+
+}
+
 body {
 	background-color: white;
 }
@@ -66,10 +72,9 @@ a.selected {
     position: relative;
     left: 0px;
     bottom: 0;
-    height: 30px;
+    max-height: 100px;
     width: 100%;
     text-align: center;	
-    overflow:hidden;
 
  }
 
