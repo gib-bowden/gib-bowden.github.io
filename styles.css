@@ -156,6 +156,41 @@ a.selected {
 	color:#5680E9;
 }
 
+/****Blog Page****/
+
+#blog-container {
+	display: inline-flex;
+	margin: 2.5% 5% auto 5%;
+	flex-wrap: wrap;
+	justify-content: center; 
+	align-items: stretch;
+}
+
+.blog-card {
+	border: 1px solid lightgrey;
+	margin: 1% 2% 2% 2%;
+	max-width: 29%
+}
+
+.blog-card-content {
+	padding-left: 7%;
+	padding-right: 7%;
+}
+
+.blog-title {
+	text-align: center;
+}
+
+.blog-title h4 {
+	text-transform: capitalize;
+	margin: 3% auto 3% auto;
+}
+
+.blog-title h5 {
+	margin: 0 auto 3% auto;
+}
+
+
 /****Font Sizes****/
 
 h1 {
@@ -169,4 +204,12 @@ h3 {
 
 h4 {
 	font-size: 20px;
+}
+
+.blog-title h4 {
+	font-size: 40px;
+}
+
+.blog-title h5 {
+	font-size: 1em ;
 }
