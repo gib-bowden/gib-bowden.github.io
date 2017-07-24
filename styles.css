@@ -19,9 +19,9 @@ body {
     justify-content: space-between;
     flex-wrap: wrap; 
     margin: 0;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    background-color: #C1C8E4;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    box-shadow: 0 2px 0 rgba(93, 96, 99, .1)
 }
 
 #nav-header h1 {
@@ -46,42 +46,53 @@ body {
 }
 
 #nav-header a, #nav-header a:link, #nav-header a:visited {
-	color: white;
+	color: rgba(93, 96, 99, .3);
 	text-decoration: none;
+	text-transform: lowercase;
 }
 
 #nav-header a:hover {
 	color: #5AB9EA; 
-	background-color: white;
-	border-radius: 5%
+	border-bottom: solid;
+	border-radius: 10%
 }
+
+#nav-header a:active {
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: -5px; 
+	margin-right: -5px; 
+ }
 
 
 #nav-header a.selected {
  	color:#5680E9;
 	border-bottom: solid;
-	background-color: #C1C8E4;
-	padding-left: 5px;
-	padding-right: 5px;
+	background-color: rgba(93, 96, 99, .1);
+	border-radius: 10%;
+	cursor: default;
  }
 
 /*footer stuff */
 
  footer {
-    position: relative;
-    left: 0px;
-    bottom: 0;
+    bottom: 10px;
     max-height: 100px;
     width: 100%;
-    text-align: center;	
+    text-align: right;
+    color: rgba(93, 96, 99, .8);
+    float: left;
+    position: fixed;	
 
  }
 
 
 /****Experience Page****/
 #experience-main {
-	display: inline-block;
-	width: 100%;	
+	display: block;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;	
 } 
 
 #experience-main article {
@@ -118,13 +129,12 @@ body {
 }
 
 #social-media {
-    float: left;
-    margin: 0 0 30px 0;
+	float: left;
+    margin: 5% 10% 30px 10%;
     padding: 5px 0 0 0;
-    width: 100%;
     overflow: auto;
     text-align: center;
-    background-color: white;
+    width: 80%;
 }
 
 #social-media li {
@@ -132,34 +142,42 @@ body {
 }
 
 
-#social-media a {
-	border-radius: 10px;
-	padding: 20%;
-}
-
 #social-media a, #social-media a:link, #social-media a:visited {
-	color: #5680E9;
+	color: rgba(93, 96, 99, .3);
 	text-decoration: none;
 }
 
 
 #social-media a:hover {
-	background-color: #5680E9;
-	color: white; 
+	color: #5AB9EA; 
+	border-radius: 5%
 }
 
+
 #social-media a:active {
-	color:#5680E9;
+	color:#5AB9EA;
+	font-size: 107px;
+	margin: -7px;
+}
+
+#social-media p {
+	color: rgba(93, 96, 99, .3);;
+}
+
+#social-media a:hover + p {
+	color: #5AB9EA; 
+	border-radius: 5%
 }
 
 /****Blog Page****/
 
 #blog-container {
 	display: inline-flex;
-	margin: 2.5% 5% auto 5%;
+	margin: 2.5% 10% auto 10%;
 	flex-wrap: wrap;
 	justify-content: center; 
 	align-items: stretch;
+	width: 80%;
 }
 
 .blog-card {
@@ -200,6 +218,10 @@ h3 {
 
 h4 {
 	font-size: 20px;
+}
+
+#nav-header li{
+	font-size: 25px;
 }
 
 #nav-header li{
