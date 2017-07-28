@@ -14,14 +14,26 @@ body {
 /* Nav-header stuff */
 
 #nav-header {
+/*    position: fixed;*/
     display: flex;
     align-items: baseline; 
     justify-content: space-between;
     flex-wrap: wrap; 
     margin: 0;
-    padding-left: 12.5%;
-    padding-right: 12.5%;
-    box-shadow: 0 2px 0 rgba(93, 96, 99, .1)
+    width: 100%;
+/*    padding-left: 12.5%;
+    padding-right: 12.5%;*/
+    box-shadow: 0 2px 0 rgba(93, 96, 99, .1);
+    background-color: white;
+}
+
+#nav {
+	padding-right: 12.5%;
+	padding-left: 12.5%;
+}
+
+#header {
+	padding-left: 12.5%;
 }
 
 #nav-header h1 {
@@ -89,10 +101,11 @@ body {
 
 /****Experience Page****/
 #experience-main {
-	display: block;
+	display: inline-block;
     width: 80%;
     margin-left: 10%;
-    margin-right: 10%;	
+    margin-right: 10%;
+
 } 
 
 #experience-main article {
