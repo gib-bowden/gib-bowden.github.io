@@ -10,6 +10,9 @@ body {
 	background-color: white;
 }
 
+.hidden {
+	display: none;
+}
 
 /* Nav-header stuff */
 
@@ -183,7 +186,11 @@ body {
 }
 
 /****Blog Page****/
-
+.jumbotron {
+	width: 80%;
+	margin: 2.5% 10% auto 10%;
+	text-align: center;
+}
 #blog-container {
 	display: inline-flex;
 	margin: 2.5% 10% auto 10%;
@@ -195,8 +202,9 @@ body {
 
 .blog-card {
 	border: 1px solid lightgrey;
-	margin: 1% 2% 2% 2%;
-	max-width: 29%
+	margin: 1% 1% 1% 1%;
+	height: 150px;
+	overflow: hidden;
 }
 
 .blog-card-content {
@@ -216,6 +224,14 @@ body {
 .blog-title h5 {
 	margin: 0 auto 3% auto;
 }
+
+
+.search-group {
+	margin-left: 10%;
+    width: 20%;
+    margin-top: 25px;
+}
+
 
 
 /****Font Sizes****/
@@ -249,4 +265,11 @@ h4 {
 	font-size: 1em ;
 }
 
+.jumbotron h4 {
+	font-size: 50px
+}
+
+.jumbotron h5 {
+	font-size: 20px
+}
 
