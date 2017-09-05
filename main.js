@@ -44,16 +44,16 @@ blogContainer.addEventListener("click", (e) => {
 		return; 
 	}
 	else if (e.target.classList.contains("blog-card")) {
-		console.log(cardContent = e.target.children[0]);
+		cardContent = e.target.children[0];
 	}
 	else if (e.target.parentNode.classList.contains("blog-card")) {
-		console.log(cardContent = e.target);
+		cardContent = e.target;
 	}
 	else if (e.target.parentNode.parentNode.classList.contains("blog-card")) {
-		console.log(cardContent = e.target.parentNode)
+		cardContent = e.target.parentNode;
 	}
 	else if (e.target.parentNode.parentNode.parentNode.classList.contains("blog-card")) {
-		console.log(cardContent = e.target.parentNode.parentNode);
+		cardContent = e.target.parentNode.parentNode;
 	}
 
 	jumboContainerContent.innerHTML = cardContent.innerHTML; //insert cardContent HTML into the jumbotron
@@ -70,25 +70,54 @@ document.getElementById("search-box").addEventListener("keypress", (e) => {
 	filterBlogsOnSearch(e.target.value + e.key);
 })
 
-//searchbox event listener to account for backspace
+//searchbox event listener to account for backspace and enter 
 document.getElementById("search-box").addEventListener("keydown", (e) => {
-	console.log(e)
 	if (e.key === "Backspace") {
 		filterBlogsOnSearch(e.target.value.slice(0, -1))
 	}
+	else if (e.key === "Enter") {
+		return; 
+	}
 })
 
-document.getElementById("search-box").addEventListener("click", () => {
-	jumboDiv.classList.add("hidden");
-})
+// //searchbox event listener that hides the jumbotron when the searchbox is selected
+// document.getElementById("search-box").addEventListener("click", () => {
+// 	jumboDiv.classList.add("hidden");
+// })
 
-
+//filter function - searches blog entries and calls the findTags function 
 const filterBlogsOnSearch = (str) => {
 	let filteredBlogs = blogs.filter((blog) => {
-		return (blog.entry.indexOf(str) > -1); 
+		return ((blog.entry.toLowerCase().indexOf(str.toLowerCase()) > -1) || (findTags(blog, str) > 0))
 	})
 	blogBuilder(filteredBlogs);
+	singleSearchResult(filteredBlogs);
 }
+
+//attempts to find the indexOf a given string to each a given arr item, increments if a match is found
+const findTags = (arr, str) => {
+	let i = 0; 
+	arr.tags.forEach((tag) => {
+		if (tag.toLowerCase().indexOf(str.toLowerCase()) > -1) {
+			i++	
+		}	
+	})
+	return i; 
+}
+
+const singleSearchResult = (arr) => {
+	if (arr.length === 1) {
+		blogContainer.children[0].click()
+	}
+	else if (arr.length === 0) {
+		jumboDiv.classList.add("hidden");
+		blogContainer.innerHTML = "No blogs found"
+	}
+	else {
+		jumboDiv.classList.add("hidden");
+	}
+}
+		
 
 
 

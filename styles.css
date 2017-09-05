@@ -88,6 +88,21 @@ body {
 	cursor: default;
  }
 
+ .navbar {
+ 	padding-left: 7%;
+ 	padding-right: 7%;
+ }
+
+
+.navbar-default .navbar-brand {
+	color: #5680E9;
+	font-size: 24px;
+}
+
+
+.navbar-default .navbar-nav > .active > a {
+	color: #5680E9;
+}
 /*footer stuff */
 
  footer {
@@ -207,6 +222,10 @@ body {
 	overflow: hidden;
 }
 
+.blog-card:hover {
+	cursor: pointer;
+}
+
 .blog-card-content {
 	padding-left: 7%;
 	padding-right: 7%;
@@ -231,7 +250,6 @@ body {
     width: 20%;
     margin-top: 25px;
 }
-
 
 
 /****Font Sizes****/
