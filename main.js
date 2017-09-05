@@ -2,23 +2,22 @@ const blogContainer = document.getElementById("blog-container")
 const jumboContainerContent = document.getElementById("jumbo-container-content");
 const jumboDiv = jumboContainerContent.parentNode;
 
-var productsRequest = new XMLHttpRequest();
+const productsRequest = new XMLHttpRequest();
 	productsRequest.addEventListener("load", importBlog)
 	productsRequest.addEventListener("error", logFailedRequest)
 	productsRequest.open("GET", "blogs.json")
 	productsRequest.send();
 
-function importBlog(){
+function importBlog() {
 	blogs = JSON.parse(this.responseText).blogs;
 	blogBuilder(blogs)
 }
 
-function logFailedRequest(){
+function logFailedRequest() {
 	console.log("dis broke")
 }
 
-
-function blogBuilder(blogs) {
+const blogBuilder = (blogs) => {
 	let blogContent = "";
 	for (blog of blogs) {		
 		const blogDomString =	    
@@ -80,47 +79,36 @@ document.getElementById("search-box").addEventListener("keydown", (e) => {
 	}
 })
 
-// //searchbox event listener that hides the jumbotron when the searchbox is selected
-// document.getElementById("search-box").addEventListener("click", () => {
-// 	jumboDiv.classList.add("hidden");
-// })
-
-//filter function - searches blog entries and calls the findTags function 
+//filter function - searches blog entries and tags via the findTags function 
 const filterBlogsOnSearch = (str) => {
-	let filteredBlogs = blogs.filter((blog) => {
-		return ((blog.entry.toLowerCase().indexOf(str.toLowerCase()) > -1) || (findTags(blog, str) > 0))
+	const filteredBlogs = blogs.filter((blog) => {
+		return ((blog.entry.toLowerCase().indexOf(str.toLowerCase()) > -1) || (findTags(blog, str) ))
 	})
 	blogBuilder(filteredBlogs);
 	singleSearchResult(filteredBlogs);
 }
 
-//attempts to find the indexOf a given string to each a given arr item, increments if a match is found
+//attempts to find the indexOf a given string to each a given arr item, returns true if a match is found
 const findTags = (arr, str) => {
-	let i = 0; 
+	let i = false;
 	arr.tags.forEach((tag) => {
 		if (tag.toLowerCase().indexOf(str.toLowerCase()) > -1) {
-			i++	
+			i = true;	
 		}	
 	})
 	return i; 
 }
 
+//displays the jumbotron if one 1 result is found, hides the jumbotron otherwise. Also provides text if no results are found
 const singleSearchResult = (arr) => {
 	if (arr.length === 1) {
-		blogContainer.children[0].click()
+		blogContainer.children[0].click();
 	}
 	else if (arr.length === 0) {
 		jumboDiv.classList.add("hidden");
-		blogContainer.innerHTML = "No blogs found"
+		blogContainer.innerHTML = "No blogs found";
 	}
 	else {
 		jumboDiv.classList.add("hidden");
 	}
 }
-		
-
-
-
-
-
-
