@@ -7,27 +7,36 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-	<div id=nav-header>
-		<div id="header">
-			<header>
-				<h1>Gib Bowden</h1>
-			</header>
-		</div>
-		<div id="nav">
-			<nav>
-				<ul>
-					<li><a href="index.html">Experience</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					<li><a href="projects.html">Projects</a></li>
-					<li><a href="about-me.html">About Me</a></li>
-					<li><a class="selected" href="#">Blog</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-	<div class="input-group search-group">
-    	<input type="text" id="search-box" class="form-control" placeholder="Search for...">
-    </div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="index.html">Gib Bowden</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <form class="navbar-form navbar-left">
+        		<div class="form-group">
+          			<input id="search-box" type="text" class="form-control" placeholder="Search blogs...">
+        		</div>
+      		</form>
+	      <ul class="nav navbar-nav navbar-right">
+			<li><a href="index.html">Experience</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="projects.html">Projects</a></li>
+			<li><a href="about-me.html">About Me</a></li>
+			<li class="active"><a href="#">Blog <span class="sr-only">(current)</span></a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>	
 	<div id="jumbo-container" class="jumbotron hidden">
 		<section id="jumbo-container-content" class="blog-card-content">
 		</section>
@@ -37,4 +46,9 @@
 </body>
 <script type="text/javascript" src="main.js"></script>
 <script src="https://use.fontawesome.com/ca8ec31cbc.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
