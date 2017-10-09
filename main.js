@@ -2,20 +2,16 @@ const blogContainer = document.getElementById("blog-container")
 const jumboContainerContent = document.getElementById("jumbo-container-content");
 const jumboDiv = jumboContainerContent.parentNode;
 
-const productsRequest = new XMLHttpRequest();
-	productsRequest.addEventListener("load", importBlog)
-	productsRequest.addEventListener("error", logFailedRequest)
-	productsRequest.open("GET", "blogs.json")
-	productsRequest.send();
-
-function importBlog() {
-	blogs = JSON.parse(this.responseText).blogs;
-	blogBuilder(blogs)
-}
-
-function logFailedRequest() {
-	console.log("dis broke")
-}
+$.ajax({
+	method: 'GET',
+	url:`blogs.json`
+})
+.done((data) => {
+	blogBuilder(data.blogs)
+})
+.fail((error) => {
+	console.log(error);
+}); 
 
 const blogBuilder = (blogs) => {
 	let blogContent = "";
@@ -37,7 +33,7 @@ const blogBuilder = (blogs) => {
 	blogContainer.innerHTML = blogContent;
 }
 
-blogContainer.addEventListener("click", (e) => {	
+$('#blog-container').click((e) => {	
 	let cardContent;
 	if (e.target.parentNode.tagName === "BODY") {
 		return; 
@@ -59,6 +55,12 @@ blogContainer.addEventListener("click", (e) => {
 	jumboContainerContent.parentNode.classList.remove("hidden"); //remove the hidden class from the jumbotron 
 	jumboContainerContent.parentNode.scrollIntoView();
 })
+
+// $('body').on('click', $('.blog-card'), (e) => {
+// 	let cardContent = e.target.children[0]; 
+// 	let jumbotronContent = $('#jumbo-container-content');
+// 	jumbotronContent.html(cardContent.innerHTML).parent().removeClass("hidden"); 
+// });
 
 document.getElementById("close-jumbo-btn").addEventListener("click", () => {
 	jumboDiv.classList.add("hidden");
