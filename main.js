@@ -1,83 +1,77 @@
-const blogContainer = document.getElementById("blog-container")
-const jumboContainerContent = document.getElementById("jumbo-container-content");
-const jumboDiv = jumboContainerContent.parentNode;
+const blogContainer = $("#blog-container");
+const jumboContainerContent = $("#jumbo-container-content");
+const jumboDiv = jumboContainerContent.parent();
 
-const productsRequest = new XMLHttpRequest();
-	productsRequest.addEventListener("load", importBlog)
-	productsRequest.addEventListener("error", logFailedRequest)
-	productsRequest.open("GET", "blogs.json")
-	productsRequest.send();
+let blogs = []; 
 
-function importBlog() {
-	blogs = JSON.parse(this.responseText).blogs;
-	blogBuilder(blogs)
-}
 
-function logFailedRequest() {
-	console.log("dis broke")
-}
+const getBlogs = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax(`blogs.json`).then((data) => { 
+            if (data !== null) {
+                resolve(data.blogs);
+            }
+        }).catch((err) => {
+            reject(err); 
+        });
+    });
+};
+
+getBlogs().then((_blogs) => {
+	blogs = _blogs; 
+	blogBuilder(blogs); 
+}); 
+
+
 
 const blogBuilder = (blogs) => {
 	let blogContent = "";
-	for (blog of blogs) {		
+	blogs.forEach((blog) => {
 		const blogDomString =	    
-			`<div id="${blog.cardId}" class="blog-card col-md-3">
-		      	<section class="blog-card-content">
-				    <div class="blog-title">
-			          	<h4>${blog.title}</h4>
-				        <h5>${blog.date}</h5>
-				    </div>
-				    <div class="blog-text">
-				        <p class="entry">${blog.entry}</p>
-				    </div>
-				</section>
-			</div>`
-		blogContent += blogDomString;
-	} 
-	blogContainer.innerHTML = blogContent;
-}
+		`<div id="${blog.cardId}" class="blog-card col-md-3">
+			  <section class="blog-card-content">
+				<div class="blog-title">
+					  <h4>${blog.title}</h4>
+					<h5>${blog.date}</h5>
+				</div>
+				<div class="blog-text">
+					<p class="entry">${blog.entry}</p>
+				</div>
+			</section>
+		</div>`
+	blogContent += blogDomString;
+	});		
+	blogContainer.html(blogContent);
+}; 
 
-blogContainer.addEventListener("click", (e) => {	
-	let cardContent;
-	if (e.target.parentNode.tagName === "BODY") {
-		return; 
-	}
-	else if (e.target.classList.contains("blog-card")) {
-		cardContent = e.target.children[0];
-	}
-	else if (e.target.parentNode.classList.contains("blog-card")) {
-		cardContent = e.target;
-	}
-	else if (e.target.parentNode.parentNode.classList.contains("blog-card")) {
-		cardContent = e.target.parentNode;
-	}
-	else if (e.target.parentNode.parentNode.parentNode.classList.contains("blog-card")) {
-		cardContent = e.target.parentNode.parentNode;
-	}
 
-	jumboContainerContent.innerHTML = cardContent.innerHTML; //insert cardContent HTML into the jumbotron
-	jumboContainerContent.parentNode.classList.remove("hidden"); //remove the hidden class from the jumbotron 
-	jumboContainerContent.parentNode.scrollIntoView();
+$('#blog-container').on("click", ".blog-card", function (e) {	
+	let cardContent = $(this).find(".blog-card-content")
+	jumboContainerContent.html(cardContent.html()) ; //insert cardContent HTML into the jumbotron
+	jumboDiv.removeClass("hidden"); //remove the hidden class from the jumbotron 
+	jumboDiv[0].scrollIntoView(); //convert back to dom element, scroll into view
 })
 
-document.getElementById("close-jumbo-btn").addEventListener("click", () => {
-	jumboDiv.classList.add("hidden");
+
+$("#close-jumbo-btn").click(() => {
+	jumboDiv.addClass("hidden");
 	})
 
 //searchbox event listener for regular keypress
-document.getElementById("search-box").addEventListener("keypress", (e) => {
+$("#search-box").keypress((e) => {
 	filterBlogsOnSearch(e.target.value + e.key);
-})
+}); 
 
 //searchbox event listener to account for backspace and enter 
-document.getElementById("search-box").addEventListener("keydown", (e) => {
+$("#search-box").keydown((e) => {
 	if (e.key === "Backspace") {
 		filterBlogsOnSearch(e.target.value.slice(0, -1))
 	}
 	else if (e.key === "Enter") {
+		e.preventDefault(); 
 		return; 
 	}
-})
+});
 
 //filter function - searches blog entries and tags via the findTags function 
 const filterBlogsOnSearch = (str) => {
@@ -102,13 +96,13 @@ const findTags = (arr, str) => {
 //displays the jumbotron if one 1 result is found, hides the jumbotron otherwise. Also provides text if no results are found
 const singleSearchResult = (arr) => {
 	if (arr.length === 1) {
-		blogContainer.children[0].click();
+		blogContainer.children()[0].click();
 	}
 	else if (arr.length === 0) {
-		jumboDiv.classList.add("hidden");
-		blogContainer.innerHTML = "No blogs found";
+		jumboDiv.addClass("hidden");
+		blogContainer.html() = "No blogs found";
 	}
 	else {
-		jumboDiv.classList.add("hidden");
+		jumboDiv.addClass("hidden");
 	}
 }
